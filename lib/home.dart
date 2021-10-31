@@ -11,16 +11,6 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class User {
-  int? id;
-  String? first_name;
-  String? last_name;
-  String? username;
-  String? last_seen_time;
-  String? avatar;
-  String? status;
-}
-
 class _HomePageState extends State<HomePage> {
   List userData = [
     {
@@ -88,7 +78,13 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.all(8),
                   children: userData.map((user) {
                     return Column(children: [
-                      ItemCard(text: user['username']),
+                      ItemCard(
+                          user: User(
+                              id: user['id'],
+                              first_name: user['first_name'],
+                              last_name: user['last_name'],
+                              last_seen_time: user['last_seen_time'],
+                              username: user['username'])),
                       const Divider(),
                     ]);
                   }).toList()
