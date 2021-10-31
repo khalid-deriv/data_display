@@ -38,7 +38,7 @@ class _SignUpState extends State<SignUp> {
         duration: Duration(seconds: 2)));
     Navigator.pushAndRemoveUntil(
       context,
-      MaterialPageRoute(builder: (context) => const MyHomePage(title: "Home")),
+      MaterialPageRoute(builder: (context) => const HomePage(title: "Home")),
       (Route<dynamic> route) => false,
     );
   }
