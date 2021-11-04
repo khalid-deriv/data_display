@@ -17,8 +17,8 @@ class User {
   final String last_name;
   final String username;
   final String last_seen_time;
-  final String avatar;
-  final String status;
+  final String? avatar;
+  final String? status;
   final int? messages;
 }
 
@@ -32,6 +32,7 @@ class ItemCard extends StatefulWidget {
 }
 
 class _ItemCardState extends State<ItemCard> {
+  final String defaultAvatar = "https://i.imgur.com/7mdRMYO.png";
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -45,7 +46,8 @@ class _ItemCardState extends State<ItemCard> {
                   flex: 3,
                   child: Center(
                       child: CircleAvatar(
-                    backgroundImage: NetworkImage(widget.user.avatar),
+                    backgroundImage:
+                        NetworkImage(widget.user.avatar ?? defaultAvatar),
                   ))),
               Expanded(
                   flex: 6,
