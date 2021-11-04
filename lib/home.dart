@@ -84,7 +84,8 @@ class _HomePageState extends State<HomePage> {
                               first_name: user['first_name'],
                               last_name: user['last_name'],
                               last_seen_time: user['last_seen_time'],
-                              username: user['username'])),
+                              username: user['username'],
+                              avatar: user['avatar'])),
                       const Divider(),
                     ]);
                   }).toList()

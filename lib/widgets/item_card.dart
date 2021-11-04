@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'badge.dart';
+
 class User {
   User(
       {required this.id,
@@ -7,8 +9,7 @@ class User {
       required this.last_name,
       required this.username,
       required this.last_seen_time,
-      this.avatar =
-          "https://w7.pngwing.com/pngs/419/473/png-transparent-computer-icons-user-profile-login-user-heroes-sphere-black-thumbnail.png",
+      this.avatar = "https://i.imgur.com/7mdRMYO.png",
       this.status = "...",
       this.messages});
   final int id;
@@ -41,7 +42,11 @@ class _ItemCardState extends State<ItemCard> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
-                  flex: 3, child: Center(child: Text(widget.user.username))),
+                  flex: 3,
+                  child: Center(
+                      child: CircleAvatar(
+                    backgroundImage: NetworkImage(widget.user.avatar),
+                  ))),
               Expanded(
                   flex: 6,
                   child: Column(
@@ -50,7 +55,11 @@ class _ItemCardState extends State<ItemCard> {
                     children: [
                       Text(
                           widget.user.first_name + " " + widget.user.last_name),
-                      Text(widget.user.status)
+                      Text(
+                        widget.user.username,
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                      Text('Status: ${widget.user.status}')
                     ],
                   )),
               Expanded(
@@ -60,7 +69,9 @@ class _ItemCardState extends State<ItemCard> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(widget.user.last_seen_time),
-                      Text(widget.user.messages.toString())
+                      widget.user.messages != null
+                          ? Badge(value: widget.user.messages.toString())
+                          : Text("")
                     ],
                   ))
             ]));
